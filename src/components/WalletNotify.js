@@ -114,7 +114,7 @@ function AttachmentFieldBox({ children }) {
 
 function AttachmentImageInput({ value, setValue }) {
   const onClick = () => {
-    const imageUrl = prompt('hello')
+    const imageUrl = prompt('Enter the URL of the image to use as an icon.')
     setValue(imageUrl)
   }
   return (
@@ -152,7 +152,7 @@ function AttachmentTextInput({ messageInput, onChange }) {
 
 function AttachmentActionInput({ value, setValue }) {
   const onClick = () => {
-    const actionUrl = prompt('hello')
+    const actionUrl = prompt('Enter the URL of the action button.')
     setValue(actionUrl)
   }
   return (
