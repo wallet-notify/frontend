@@ -28,9 +28,6 @@ export default {
     display: 'flex',
     justifyContent: 'center',
   },
-  logo_image: {
-    height: 80,
-  },
 
   fieldLabel: {
     display: 'flex',

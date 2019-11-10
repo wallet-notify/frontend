@@ -1,7 +1,7 @@
 import * as React from 'react'
 import TextareaAutosize from 'react-autosize-textarea'
 
-import logo from 'design/logo.png'
+import { ReactComponent as Logo } from 'design/logo.svg'
 import { ReactComponent as PlusLarge } from 'design/plus-large.svg'
 import { ReactComponent as PlusSmall } from 'design/plus-small.svg'
 import styles from 'components/WalletNotify.style.js'
@@ -23,7 +23,7 @@ export default function WalletNotify({ sendNotification }) {
   return (
     <div style={styles.container}>
       <div style={styles.logo}>
-        <img style={styles.logo_image} src={logo} alt='Wallet Notify' />
+        <Logo />
       </div>
 
       <Separator unit={12} />
