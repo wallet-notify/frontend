@@ -5,14 +5,15 @@
   "dependencies": {
     "ethers": "^4.0.39",
     "react": "^16.11.0",
+    "react-autosize-textarea": "^7.0.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
     "wallet-notify": "^0.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "env NODE_PATH=./src react-scripts start",
+    "build": "env NODE_PATH=./src react-scripts build",
+    "test": "env NODE_PATH=./src react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -29,5 +30,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
   }
 }
