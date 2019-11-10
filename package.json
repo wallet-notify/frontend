@@ -2,6 +2,7 @@
   "name": "wallet-notify-frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://wallet-notify.github.io/frontend",
   "dependencies": {
     "ethers": "^4.0.39",
     "react": "^16.11.0",
