@@ -24,12 +24,21 @@ export default {
     maxWidth: 540,
   },
 
+  linksBar: {
+    alignSelf: 'center',
+    display: 'grid',
+    gridAutoFlow: 'column',
+    gridGap: 20,
+  },
+  linksBar_link: {
+    fontSize: 14,
+    textDecoration: 'none',
+    color: '#8212F2',
+  },
+
   logo: {
     display: 'flex',
     justifyContent: 'center',
-  },
-  logo_image: {
-    height: 80,
   },
 
   fieldLabel: {
