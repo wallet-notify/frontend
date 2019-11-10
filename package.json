@@ -15,6 +15,7 @@
   "scripts": {
     "start": "env NODE_PATH=./src react-scripts start",
     "build": "env NODE_PATH=./src react-scripts build",
+    "postbuild": "mv ./build ./docs",
     "test": "env NODE_PATH=./src react-scripts test",
     "eject": "react-scripts eject"
   },
