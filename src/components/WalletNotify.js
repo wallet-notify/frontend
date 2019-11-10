@@ -22,6 +22,23 @@ export default function WalletNotify({ sendNotification }) {
 
   return (
     <div style={styles.container}>
+      <div style={styles.linksBar}>
+        <a style={styles.linksBar_link} href='https://github.com/wallet-notify'>
+          GitHub
+        </a>
+        <a style={styles.linksBar_link} href='https://t.me/walletnotify'>
+          Telegram
+        </a>
+        <a
+          style={styles.linksBar_link}
+          href='https://github.com/ethereum/EIPs/issues'
+        >
+          ERC 2365
+        </a>
+      </div>
+
+      <Separator unit={10} />
+
       <div style={styles.logo}>
         <Logo />
       </div>
