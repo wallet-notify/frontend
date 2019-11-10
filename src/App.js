@@ -37,10 +37,19 @@ async function submitTx(to, notification) {
 }
 
 export default function App() {
-  const sendNotification = async () => {
+  const sendNotification = async ({
+    addressInput,
+    imageInput,
+    messageInput,
+    actionInput,
+  }) => {
+    console.log({
+      addressInput,
+      imageInput,
+      messageInput,
+      actionInput,
+    })
     debugger
-    // console.log('test')
-    // console.log('state:', this.state)
 
     // const notification = {
     //   t: this.state.notificationInput,

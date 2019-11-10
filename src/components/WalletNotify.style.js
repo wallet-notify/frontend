@@ -11,6 +11,7 @@ const fieldBoxStyles = {
 const attachmentButtonStyles = {
   border: 0,
   background: '#F2F2F2',
+  cursor: 'pointer',
 }
 
 export default {
@@ -26,8 +27,6 @@ export default {
   logo: {
     display: 'flex',
     justifyContent: 'center',
-
-    marginBottom: 48,
   },
   logo_image: {
     height: 80,
@@ -42,7 +41,7 @@ export default {
   },
   fieldLabel_text: {
     fontSize: 20,
-    fontWeight: '900',
+    fontWeight: '800',
     letterSpacing: -1,
 
     marginRight: 8,
@@ -89,6 +88,9 @@ export default {
     borderRadius: 64 / 2,
     ...attachmentButtonStyles,
 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -125,5 +127,23 @@ export default {
     fontSize: 13,
     fontWeight: '700',
     color: '#8212F2',
+  },
+
+  submitButton: {
+    background: '#8212F2',
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+
+    display: 'flex',
+    alignSelf: 'center',
+    justifyContent: 'center',
+
+    paddingLeft: 40,
+    paddingRight: 40,
+
+    height: 48,
+    borderRadius: 8,
+    borderWidth: 0,
   },
 }

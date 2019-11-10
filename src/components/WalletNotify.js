@@ -1,4 +1,5 @@
 import * as React from 'react'
+import TextareaAutosize from 'react-autosize-textarea'
 
 import logo from 'design/logo.png'
 import { ReactComponent as PlusLarge } from 'design/plus-large.svg'
@@ -7,9 +8,17 @@ import styles from 'components/WalletNotify.style.js'
 
 export default function WalletNotify({ sendNotification }) {
   const [addressInput, setAddressInput] = React.useState('')
-  const [notificationInput, setNotificationInput] = React.useState('')
+  const [imageInput, setImageInput] = React.useState('')
   const [messageInput, setMessageInput] = React.useState('')
-  const [urlInput, setUrlInput] = React.useState('')
+  const [actionInput, setActionInput] = React.useState('')
+
+  const onClickSubmit = () =>
+    sendNotification({
+      addressInput,
+      imageInput,
+      messageInput,
+      actionInput,
+    })
 
   return (
     <div style={styles.container}>
@@ -38,19 +47,23 @@ export default function WalletNotify({ sendNotification }) {
       </FieldLabel>
       <Separator unit={2} />
       <AttachmentFieldBox>
-        <AttachmentImageInput />
+        <AttachmentImageInput
+          value={imageInput}
+          setValue={imageUrl => setImageInput(imageUrl)}
+        />
         <AttachmentTextInput
           value={messageInput}
           onChange={event => setMessageInput(event.target.value)}
         />
-        <AttachmentActionInput />
+        <AttachmentActionInput
+          value={actionInput}
+          setValue={actionUrl => setActionInput(actionUrl)}
+        />
       </AttachmentFieldBox>
 
-      {/*<div style={styles.button}>
-        <button type='button' onClick={sendNotification}>
-          Submit
-        </button>
-      </div>*/}
+      <Separator unit={10} />
+
+      <SubmitButton onClick={onClickSubmit} />
     </div>
   )
 }
@@ -82,14 +95,27 @@ function AttachmentFieldBox({ children }) {
   return <div style={styles.attachmentFieldBox}>{children}</div>
 }
 
-function AttachmentImageInput() {
+function AttachmentImageInput({ value, setValue }) {
   const onClick = () => {
-    prompt('hello')
+    const imageUrl = prompt('hello')
+    setValue(imageUrl)
   }
   return (
-    <button style={styles.attachmentImageInput} onClick={onClick}>
-      <PlusLarge />
-      <div style={styles.attachmentImageInput_text}>icon</div>
+    <button
+      style={{
+        ...styles.attachmentImageInput,
+        backgroundImage: value ? `url(${value})` : undefined,
+      }}
+      onClick={onClick}
+    >
+      {value ? (
+        undefined
+      ) : (
+        <React.Fragment>
+          <PlusLarge />
+          <div style={styles.attachmentImageInput_text}>icon</div>
+        </React.Fragment>
+      )}
     </button>
   )
 }
@@ -107,15 +133,27 @@ function AttachmentTextInput({ messageInput, onChange }) {
   )
 }
 
-function AttachmentActionInput() {
+function AttachmentActionInput({ value, setValue }) {
   const onClick = () => {
-    prompt('hello')
+    const actionUrl = prompt('hello')
+    setValue(actionUrl)
   }
   return (
     <button style={styles.attachmentActionInput} onClick={onClick}>
-      <PlusSmall />
-      <Separator unit={1} />
-      <div style={styles.attachmentActionInput_text}>URL Action</div>
+      {value ? (
+        <div
+          style={styles.attachmentActionInput_text}
+          title={`Linked to: ${value}`}
+        >
+          Linked
+        </div>
+      ) : (
+        <React.Fragment>
+          <PlusSmall />
+          <Separator unit={1} />
+          <div style={styles.attachmentActionInput_text}>URL Action</div>
+        </React.Fragment>
+      )}
     </button>
   )
 }
@@ -126,6 +164,18 @@ function Separator({ unit }) {
 
 function Textarea({ style, ...props }) {
   return (
-    <textarea {...props} style={{ ...styles.textarea, ...style }} rows='1' />
+    <TextareaAutosize
+      {...props}
+      style={{ ...styles.textarea, ...style }}
+      rows='1'
+    />
+  )
+}
+
+function SubmitButton({ onClick }) {
+  return (
+    <button style={styles.submitButton} type='button' onClick={onClick}>
+      Submit
+    </button>
   )
 }
