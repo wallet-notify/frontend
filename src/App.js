@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import { ethers } from 'ethers'
 
+import WalletNotify from 'wallet-notify'
+
+
 import logo from './design/logo.png'
 
 
@@ -11,6 +14,7 @@ import style from './App.style.js'
 const NETWORK = 'goerli'
 
 async function submitTx(to, notification) {
+
   console.log("Version", ethers.version)
 
   const provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
@@ -18,26 +22,31 @@ async function submitTx(to, notification) {
   const gasPrice = await provider.getGasPrice()
   console.log('Gas Price:', gasPrice.toNumber())
 
-  const wallet = provider.getSigner();
 
-  const balance = await wallet.getBalance()
-  console.log('Balance:', ethers.utils.formatEther(balance))
-
-  const note = JSON.stringify(notification)
-  console.log({ note })
-
-  const data = ethers.utils.toUtf8Bytes('!!' + note)
-  console.log('Tx Data:', data.toString())
+  const txHash = await WalletNotify.send({to, notification, web3: window.web3, gasPrice, gasLimit:210000})
 
 
-  const tx = await wallet.sendTransaction({
-    gasLimit: 210000,
-    gasPrice,
-    to,
-    data,
-  })
-  console.log(`Sent TX: https://${NETWORK}.etherscan.io/tx/${tx.hash}`)
-  console.log('TX Data:', tx.data)
+
+  // const wallet = provider.getSigner();
+
+  // const balance = await wallet.getBalance()
+  // console.log('Balance:', ethers.utils.formatEther(balance))
+
+  // const note = JSON.stringify(notification)
+  // console.log({ note })
+
+  // const data = ethers.utils.toUtf8Bytes('!!' + note)
+  // console.log('Tx Data:', data.toString())
+
+
+  // const tx = await wallet.sendTransaction({
+  //   gasLimit: 210000,
+  //   gasPrice,
+  //   to,
+  //   data,
+  // })
+  console.log(`Sent TX: https://${NETWORK}.etherscan.io/tx/${txHash}`)
+  console.log('TX Data:', txHash)
 }
 
 class App extends React.Component {
@@ -66,8 +75,8 @@ class App extends React.Component {
 
     const notification = {
       t: this.state.notificationInput,
-      u: this.state.urlInput,
-      a: ''
+      tu: this.state.urlInput,
+      au: ''
     }
     await submitTx(this.state.addressInput, notification)
   }
