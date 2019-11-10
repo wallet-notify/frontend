@@ -10,12 +10,10 @@ const EthCrypto = require('eth-crypto')
 const NETWORK = 'goerli'
 
 async function submitTxOld(to, imageInput, messageInput, actionInput) {
-
-
   const notification = {
     t: messageInput,
     tu: imageInput,
-    au: actionInput
+    au: actionInput,
   }
 
   console.log('Version', ethers.version)
@@ -49,8 +47,6 @@ async function submitTxOld(to, imageInput, messageInput, actionInput) {
   console.log(`Sent TX: https://${NETWORK}.etherscan.io/tx/${tx.hash}`)
   console.log('TX Data:', tx.data)
 }
-
-
 
 async function submitTx(to, imageInput, messageInput, actionInput) {
   const notification = {
