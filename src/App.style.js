@@ -35,12 +35,10 @@ export default {
   },
 
   atachments__icon: {
-
     flex: 0.3,
-
   },
 
   button: {
     flex: 0.3,
-  }
+  },
 }
