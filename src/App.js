@@ -1,10 +1,7 @@
-import React from 'react'
-import './App.css'
+import * as React from 'react'
 import { ethers } from 'ethers'
 
-import logo from './design/logo.png'
-
-import style from './App.style.js'
+import WalletNotify from './components/WalletNotify'
 
 const NETWORK = 'goerli'
 
@@ -39,83 +36,19 @@ async function submitTx(to, notification) {
   console.log('TX Data:', tx.data)
 }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      addressInput: '',
-      notificationInput: '',
-      urlInput: '',
-    }
+export default function App() {
+  const sendNotification = async () => {
+    debugger
+    // console.log('test')
+    // console.log('state:', this.state)
+
+    // const notification = {
+    //   t: this.state.notificationInput,
+    //   u: this.state.urlInput,
+    //   a: '',
+    // }
+    // await submitTx(this.state.addressInput, notification)
   }
 
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
-
-    this.setState({
-      [name]: value,
-    })
-  }
-
-  sendNotification = async () => {
-    console.log('test')
-    console.log('state:', this.state)
-
-    const notification = {
-      t: this.state.notificationInput,
-      u: this.state.urlInput,
-      a: '',
-    }
-    await submitTx(this.state.addressInput, notification)
-  }
-
-  render() {
-    return (
-      <form>
-        <div style={style.base}>
-          <div style={style.logo}>
-            <img src={logo} alt='Go back' />
-          </div>
-
-          <div style={style.address}>
-            Address:
-            <input
-              name='addressInput'
-              type='text'
-              value={this.state.addressInput}
-              onChange={this.handleInputChange}
-            />
-          </div>
-
-          <div style={style.atachments}>
-            <div style={style.atachments__icon}></div>
-            Attachments:
-            <input
-              name='notificationInput'
-              type='text'
-              value={this.state.notificationInput}
-              onChange={this.handleInputChange}
-            />
-            URL:
-            <input
-              name='urlInput'
-              type='text'
-              value={this.state.urlInput}
-              onChange={this.handleInputChange}
-            />
-          </div>
-
-          <div style={style.button}>
-            <button type='button' onClick={this.sendNotification}>
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
-    )
-  }
+  return <WalletNotify sendNotification={sendNotification} />
 }
-
-export default App
