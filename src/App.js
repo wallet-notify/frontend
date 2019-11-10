@@ -16,7 +16,10 @@ async function submitTxOld(to, imageInput, messageInput, actionInput) {
     au: actionInput,
   }
 
+  await window.ethereum.enable()
+
   console.log('Version', ethers.version)
+
 
   const provider = new ethers.providers.Web3Provider(
     window.web3.currentProvider,
