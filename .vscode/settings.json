@@ -1,0 +1,22 @@
+{
+  "gotoSymbolStack.currentStackPosition": 1,
+  "gotoSymbolStack.maxStackPosition": 2,
+  "gotoSymbolStack.filePositionInfo": [
+    {
+      "textFile": "/Users/imarkelo/git/ETHWaterloo/frontend/src/App.js",
+      "viewColumn": 1,
+      "textPosition": {
+        "line": 93,
+        "character": 28
+      }
+    },
+    {
+      "textFile": "/Users/imarkelo/git/ETHWaterloo/frontend/src/App.js",
+      "viewColumn": 1,
+      "textPosition": {
+        "line": 93,
+        "character": 28
+      }
+    }
+  ]
+}
