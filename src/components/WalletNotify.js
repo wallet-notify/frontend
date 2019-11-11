@@ -26,7 +26,7 @@ export default function WalletNotify({ sendNotification }) {
         <a style={styles.linksBar_link} href='https://github.com/wallet-notify'>
           GitHub
         </a>
-        <a style={styles.linksBar_link} href='https://t.me/walletnotify'>
+        <a style={styles.linksBar_link} href='https://t.me/walletnotify_chat'>
           Telegram
         </a>
         <a
